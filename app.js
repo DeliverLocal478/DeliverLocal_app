@@ -11,7 +11,9 @@ function isStandalone() {
          window.navigator.standalone === true;
 }
 function isIOS() {
-  return /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const userAgent = navigator.userAgent.toLowerCase();
+  const isIPadOS = navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+  return /iphone|ipad|ipod/.test(userAgent) || isIPadOS;
 }
 
 // Installed launcher behavior: immediately open the DeliverLocal ordering site.
